@@ -1,0 +1,21 @@
+<style>
+    #menu{ width: 300px;  background: yellow; }
+    #menu ul li  { display: inline; }
+    </style>
+    <script>
+        $(document).scroll(function(){
+            $('#menu').css({
+                top: $(document).scrollTop()
+            });
+        });
+    </script>
+
+<div id="menu">
+<ul >
+<li ><a href="#">Главная</a></li>
+<li ><a href="#">HTML</a></li>
+<li ><a href="#">CSS</a></li>
+<li ><a href="#" id="nowopen">PHP</a></li>
+<li ><a href="#">SEO</a></li>
+</ul>
+</div>

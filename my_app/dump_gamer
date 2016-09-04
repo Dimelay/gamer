@@ -1,0 +1,300 @@
+-- MySQL dump 10.13  Distrib 5.5.50, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: gamer_cash
+-- ------------------------------------------------------
+-- Server version	5.5.50-0+deb8u1-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Drujba`
+--
+
+DROP TABLE IF EXISTS `Drujba`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Drujba` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26484 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Fartuna`
+--
+
+DROP TABLE IF EXISTS `Fartuna`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Fartuna` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21644 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Plasa`
+--
+
+DROP TABLE IF EXISTS `Plasa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Plasa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20706 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `all_sum`
+--
+
+DROP TABLE IF EXISTS `all_sum`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `all_sum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `all_id` int(11) NOT NULL,
+  `pid` varchar(40) DEFAULT NULL,
+  `money_in` decimal(20,0) NOT NULL DEFAULT '0',
+  `money_out` decimal(20,0) NOT NULL DEFAULT '0',
+  `c_in` decimal(20,0) NOT NULL DEFAULT '0',
+  `c_out` decimal(20,0) NOT NULL DEFAULT '0',
+  `dates` datetime NOT NULL,
+  `club_id` int(11) NOT NULL,
+  `session_key` char(64) NOT NULL,
+  `bonus` decimal(20,0) NOT NULL DEFAULT '0',
+  `friend` decimal(20,0) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `all_id` (`all_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1029796 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `club`
+--
+
+DROP TABLE IF EXISTS `club`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `club` (
+  `club_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(50) DEFAULT NULL,
+  `level` enum('1','2') NOT NULL DEFAULT '1',
+  PRIMARY KEY (`club_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `club_access`
+--
+
+DROP TABLE IF EXISTS `club_access`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `club_access` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `club_id` int(11) NOT NULL,
+  `ipaddr` char(16) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `club_id` (`club_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `jquery_themes`
+--
+
+DROP TABLE IF EXISTS `jquery_themes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jquery_themes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `theme` char(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `log`
+--
+
+DROP TABLE IF EXISTS `log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `log` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `pid` varchar(50) NOT NULL,
+  `action` char(150) DEFAULT NULL,
+  `money` decimal(20,0) NOT NULL DEFAULT '0',
+  `ch` decimal(20,0) NOT NULL DEFAULT '0',
+  `dates` datetime NOT NULL,
+  `club_id` int(11) NOT NULL,
+  `session_key` char(64) NOT NULL,
+  PRIMARY KEY (`log_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1036230 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `min`
+--
+
+DROP TABLE IF EXISTS `min`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `min` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `min` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `pbook`
+--
+
+DROP TABLE IF EXISTS `pbook`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pbook` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` char(11) DEFAULT NULL,
+  `name` char(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2174 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `pbook_name`
+--
+
+DROP TABLE IF EXISTS `pbook_name`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pbook_name` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `point`
+--
+
+DROP TABLE IF EXISTS `point`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `point` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` varchar(40) NOT NULL,
+  `money` decimal(20,0) NOT NULL DEFAULT '0',
+  `active` enum('0','1') NOT NULL DEFAULT '1',
+  `dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `descr` varchar(200) DEFAULT NULL,
+  `level` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
+  `num` varchar(20) DEFAULT NULL,
+  `fio` varchar(255) DEFAULT NULL,
+  `phone` char(20) DEFAULT NULL,
+  `friend` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3668 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `point_type`
+--
+
+DROP TABLE IF EXISTS `point_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `point_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(30) DEFAULT NULL,
+  `level` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
+  `procent` int(11) NOT NULL DEFAULT '0',
+  `min_s` int(11) NOT NULL DEFAULT '50',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `u_session`
+--
+
+DROP TABLE IF EXISTS `u_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `u_session` (
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+  `session_key` char(64) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `s_d` datetime DEFAULT NULL,
+  `e_d` datetime DEFAULT NULL,
+  `club_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15740 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `active` enum('0','1') NOT NULL DEFAULT '1',
+  `login` char(20) NOT NULL,
+  `name` char(50) NOT NULL,
+  `password` char(41) NOT NULL,
+  `phone` char(20) DEFAULT NULL,
+  `descr` char(200) DEFAULT NULL,
+  `dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_online` enum('0','1') NOT NULL DEFAULT '0',
+  `level` enum('0','1') NOT NULL DEFAULT '0',
+  `nextpwd` char(20) DEFAULT NULL,
+  `theme` char(32) NOT NULL DEFAULT 'base',
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=178 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `video_dir`
+--
+
+DROP TABLE IF EXISTS `video_dir`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `video_dir` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dir` char(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-08-13 20:26:29
