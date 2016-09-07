@@ -9,7 +9,8 @@
 {% block my_script %}{% endblock %}
  
 </head>
-<div class='ui-widget-content' id="parent" style="height:100%; width: 100%; position: absolute; top: 0; left: 0; overflow: auto;">
+{% include "menu.html" %}
+<div style="margin-top: 80px; background-color: #ddd;">
 {%block content %}{% endblock %}
 </div>
 </html>

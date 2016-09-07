@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from my_app.models import club,  UserProfile
+from my_app.models import club,  UserProfile, point
 from my_app.forms import SearchPoint
 #from django.views.decorators import csrf
 #from django.views.decorators.csrf import csrf_protect
@@ -59,3 +59,7 @@ def user_logout(request):
 def index(request):
 	searchpoint = SearchPoint()
 	return render(request,"main.html",{'searchpoint':searchpoint})
+
+@login_required(redirect_field_name=None)
+def cart(request):
+    return render(request,"cart.html",{'point': point.objects.exclude(fio='').order_by('fio') })
