@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% block title %} Рабочий кабинет {% endblock %}
 {% block content %}
+{% include "menu.html" %}
 {{request.user.last_name}} {{request.user.first_name}}<br>
 phone {{request.user.profile.phone}}<br>
 club_type {{request.session.club_type}}<br>
@@ -21,6 +22,7 @@ user_level {{request.user.profile.level}}
 </form>
 </div>
 <a href="{% url 'logout' %}">Logout</a>
-
-
+{% for i in "1234567891011121314151615616546546541321365465464" %}
+user_level {{request.user.profile.level}}<br>
+{% endfor %}
 {% endblock %}
