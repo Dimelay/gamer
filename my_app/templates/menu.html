@@ -1,16 +1,45 @@
 <style>
-    #menu{ width: 300px;  background: yellow; }
-    #menu ul li  { display: inline; }
+.container {
+margin: 0 auto;
+    padding: 1.5em 1em;
+    position: relative;
+     text-align: center;
+}
+header {
+    background-color: #fff;
+    height: 80px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header nav {
+    padding: 0.5em 0;
+    width: 100%;
+}
+header li {
+    display: inline-block;
+    font-size: 1em;
+    margin: 0;
+    padding: 0 0 0 2em;
+    position: relative;
+    text-transform: uppercase;
+}
+header li:last-child::after {
+    display: none;
+}
+header li a {
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+}
+header li a:hover, header li a.active {
+    border-bottom-color: #5a5c5b;
+    text-decoration: none;
+}
     </style>
-    <script>
-        $(document).scroll(function(){
-            $('#menu').css({
-                top: $(document).scrollTop()
-            });
-        });
-    </script>
-
-<div id="menu">
+<header>
+<div class="container">
 <ul >
 <li ><a href="#">Главная</a></li>
 <li ><a href="#">HTML</a></li>
@@ -19,3 +48,4 @@
 <li ><a href="#">SEO</a></li>
 </ul>
 </div>
+</header>
