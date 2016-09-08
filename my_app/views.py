@@ -2,7 +2,7 @@
 from django.shortcuts import HttpResponse,render, redirect
 #from django.template import loader, Context, RequestContext
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
@@ -61,5 +61,6 @@ def index(request):
 	return render(request,"main.html",{'searchpoint':searchpoint})
 
 @login_required(redirect_field_name=None)
+@permission_required('point.point_all_view',raise_exception=True)
 def cart(request):
     return render(request,"cart.html",{'point': point.objects.exclude(fio='').order_by('fio') })
