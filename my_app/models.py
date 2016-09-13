@@ -33,21 +33,21 @@ class club_type (models.Model):
 	club_type = models.CharField(max_length=1,verbose_name='Тип клуба',choices=club_ch,default='0')
 """
 class club (models.Model):
-	class Meta:
-		verbose_name_plural = 'Клубы'
-		verbose_name = 'Клуб'
+    class Meta:
+            verbose_name_plural = 'Клубы'
+            verbose_name = 'Клуб'
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+            return self.name
 
-	club_ch = (
-		('0','Пункт приема'),
-		('1', 'Пунк выдачи'),
-		)
+    club_ch = (
+            ('0','Пункт приема'),
+            ('1', 'Пунк выдачи'),
+            )
 	
-	name = models.CharField(max_length=50, verbose_name='Название клуба',default='')
-	club_type = models.CharField(max_length=1,verbose_name='Тип клуба',choices=club_ch,default='0')
-	ipaddr = models.GenericIPAddressField(verbose_name='IP клуба')
+    name = models.CharField(max_length=50, verbose_name='Название клуба',default='')
+    club_type = models.CharField(max_length=1,verbose_name='Тип клуба',choices=club_ch,default='0')
+    ipaddr = models.GenericIPAddressField(verbose_name='IP клуба')
 
 class point_type(models.Model):
 	class Meta:
